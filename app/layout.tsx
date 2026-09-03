@@ -7,9 +7,23 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-body' })
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display' })
 
 export const metadata: Metadata = {
-  title: 'Jump’In Paris | Location de structures gonflables',
-  description: 'Jump’In Paris loue des châteaux gonflables, aires de jeux et animations pour vos événements en Île-de-France.',
+  metadataBase: new URL('https://jumpinparis.fr'),
+  title: {
+    default: 'Jump’In Paris | Location de château gonflable en Île-de-France',
+    template: '%s | Jump’In Paris',
+  },
+  description:
+    'Jump’In Paris loue des châteaux gonflables, aires de jeux et animations pour anniversaires, fêtes de quartier et événements en Île-de-France.',
   generator: 'Jump’In Paris',
+  keywords: [
+    'location château gonflable Île-de-France',
+    'château gonflable Paris',
+    'location aire de jeux',
+    'anniversaire enfant Île-de-France',
+  ],
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [
       {

@@ -12,6 +12,10 @@ export type Product = {
   image?: string
   dimensions?: string
   tag?: string
+  description: string
+  ageRange: string
+  indoorOutdoor: string
+  eventTypes: string[]
 }
 
 export type CategorySlug = 'chateaux' | 'aires-de-jeux' | 'jeux'
@@ -25,33 +29,235 @@ type CategoryConfig = {
 }
 
 const castles: Product[] = [
-  { id: 'fee', name: 'Château Fée', price: 60, dimensions: '2,4 × 2,1 × 2 m', image: '/images/chateau-fee.webp' },
-  { id: 'fort', name: 'Château Fort', price: 70, dimensions: '2,8 × 2,6 × 2,1 m', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chateau-fort-QWNaYbO8E2jJl893eQm2ZAEWaD3CQZ.webp' },
-  { id: 'licorne', name: 'Château Licorne', price: 70, dimensions: '3,4 × 3,8 × 2,5 m', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chateau-licorne-29WAebFGtVA2l3VZyhE2LV6sGXRX26.webp' },
-  { id: 'splash', name: 'Château Splash', price: 80, dimensions: '3,9 × 3 × 2 m', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chateau-splash-BWeML8a60pnAHRk77TYkzPFFbypvoU.webp' },
-  { id: 'palais', name: 'Palais Blanc', price: 80, dimensions: '2,4 × 2,5 × 2,4 m', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/palais-blanc-HiqWTA7whUxtltBKmiPhsMlkmHTr2z.webp' },
-  { id: 'ninja', name: 'Ninja Parc', price: 80, dimensions: '4,9 × 2,4 × 1,9 m', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ninja-parc-rX8HLbniLrEK9tWeKYqwrj1jmmZMNc.webp' },
-  { id: 'papou', name: 'Papou Pompier', price: 80, dimensions: '2,7 × 5,6 × 2,1 m', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/papou-pompier-WeQPQBqXUVnBrpdoDKgMrI6u8kaV73.webp' },
-  { id: 'mega', name: 'Mega Parc', price: 90, dimensions: '3,4 × 4 × 2,6 m', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mega-parc-Y7ilAb6C2XNle4QDFOFReftkc5e4Nu.webp' },
-  { id: 'bubble', name: 'Bubble House XL', price: 120, dimensions: '4,8 × 3 × 2,2 m', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bubble-house-mpdkAFeRflnrgBeGM2ob0Jx65NU4hi.webp', tag: 'Nouveau' },
+  {
+    id: 'fee',
+    name: 'Château Fée',
+    price: 60,
+    dimensions: '2,4 × 2,1 × 2 m',
+    image: '/images/chateau-fee.webp',
+    description: 'Le château gonflable Fée est idéal pour les anniversaires, baby-showers et fêtes en jardin avec des enfants de 3 à 10 ans.',
+    ageRange: '3 à 10 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'baby shower', 'fête privée', 'kermesse'],
+  },
+  {
+    id: 'fort',
+    name: 'Château Fort',
+    price: 70,
+    dimensions: '2,8 × 2,6 × 2,1 m',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chateau-fort-QWNaYbO8E2jJl893eQm2ZAEWaD3CQZ.webp',
+    description: 'Le Château Fort est parfait pour un anniversaire sur mesure ou une animation en plein air, avec un espace généreux pour jouer en famille.',
+    ageRange: '4 à 12 ans',
+    indoorOutdoor: 'Usage extérieur privilégié',
+    eventTypes: ['anniversaire', 'fête de quartier', 'kermesse', 'événement extérieur'],
+  },
+  {
+    id: 'licorne',
+    name: 'Château Licorne',
+    price: 70,
+    dimensions: '3,4 × 3,8 × 2,5 m',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chateau-licorne-29WAebFGtVA2l3VZyhE2LV6sGXRX26.webp',
+    description: 'Un château gonflable coloré et accueillant pour des fêtes enfantines, des rendez-vous scolaires ou des événements familiaux en Île-de-France.',
+    ageRange: '3 à 10 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'fête scolaire', 'mariage enfant', 'événement familial'],
+  },
+  {
+    id: 'splash',
+    name: 'Château Splash',
+    price: 80,
+    dimensions: '3,9 × 3 × 2 m',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chateau-splash-BWeML8a60pnAHRk77TYkzPFFbypvoU.webp',
+    description: 'Le Château Splash apporte une touche ludique à tous types d’événements extérieurs, des fêtes d’enfants aux animations de village.',
+    ageRange: '5 à 12 ans',
+    indoorOutdoor: 'Usage extérieur recommandé',
+    eventTypes: ['anniversaire', 'collectivité', 'kermesse', 'fête de quartier'],
+  },
+  {
+    id: 'palais',
+    name: 'Palais Blanc',
+    price: 80,
+    dimensions: '2,4 × 2,5 × 2,4 m',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/palais-blanc-HiqWTA7whUxtltBKmiPhsMlkmHTr2z.webp',
+    description: 'Le Palais Blanc donne un effet premium pour les anniversaires, mariages et soirées thématiques, avec un cadre élégant et rassurant.',
+    ageRange: '4 à 12 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'mariage', 'soirée privée', 'fête commune'],
+  },
+  {
+    id: 'ninja',
+    name: 'Ninja Parc',
+    price: 80,
+    dimensions: '4,9 × 2,4 × 1,9 m',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ninja-parc-rX8HLbniLrEK9tWeKYqwrj1jmmZMNc.webp',
+    description: 'Le Ninja Parc convient aux événements sportifs et aux fêtes dynamiques, avec un format idéal pour les enfants actifs et les groupes.',
+    ageRange: '5 à 12 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'team building', 'fête d’école', 'animation événementielle'],
+  },
+  {
+    id: 'papou',
+    name: 'Papou Pompier',
+    price: 80,
+    dimensions: '2,7 × 5,6 × 2,1 m',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/papou-pompier-WeQPQBqXUVnBrpdoDKgMrI6u8kaV73.webp',
+    description: 'Le Papou Pompier apporte un univers festif et coloré pour les anniversaires, fêtes de quartier et animations municipales.',
+    ageRange: '3 à 12 ans',
+    indoorOutdoor: 'Usage extérieur idéal',
+    eventTypes: ['anniversaire', 'fête de quartier', 'kermesse', 'animation collective'],
+  },
+  {
+    id: 'mega',
+    name: 'Mega Parc',
+    price: 90,
+    dimensions: '3,4 × 4 × 2,6 m',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mega-parc-Y7ilAb6C2XNle4QDFOFReftkc5e4Nu.webp',
+    description: 'Le Mega Parc est excellent pour les grands groupes, avec un espace suffisant pour des animations de fête, de kermesse ou de village.',
+    ageRange: '5 à 12 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'kermesse', 'fête de ville', 'événement de groupe'],
+  },
+  {
+    id: 'bubble',
+    name: 'Bubble House XL',
+    price: 120,
+    dimensions: '4,8 × 3 × 2,2 m',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bubble-house-mpdkAFeRflnrgBeGM2ob0Jx65NU4hi.webp',
+    tag: 'Nouveau',
+    description: 'Le Bubble House XL offre un format généreux pour les anniversaires, fêtes d’entreprise et événements familiaux qui veulent un espace ludique et mémorable.',
+    ageRange: '4 à 12 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'fête d’entreprise', 'mariage', 'événement festif'],
+  },
 ]
 
 const parks: Product[] = [
-  { id: 'mini', name: 'Mini Kids Park', price: 349, image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mini-kids-park-6RoaIiIYQZc6Vo3uAvLb8uwbOUAIYB.webp', tag: 'Dès 349 €' },
-  { id: 'maxi', name: 'Maxi Kids Park', price: 399, image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/maxi-kids-park-ljpUXbA42akT4DdmnetvmaMssbCsJJ.webp', tag: 'Dès 399 €' },
-  { id: 'royal', name: 'Royal Kids Park', price: 449, image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/royal-kids-park-P5QWMDziwoSo3OqvPxxEcCbCPumxdT.webp', tag: 'Dès 449 €' },
+  {
+    id: 'mini',
+    name: 'Mini Kids Park',
+    price: 349,
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mini-kids-park-6RoaIiIYQZc6Vo3uAvLb8uwbOUAIYB.webp',
+    tag: 'Dès 349 €',
+    description: 'L’aire de jeux Mini Kids Park est idéale pour des anniversaires ou des événements familiaux avec un espace compact mais très dynamique.',
+    ageRange: '3 à 8 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'fête de quartier', 'événement privé', 'kermesse'],
+  },
+  {
+    id: 'maxi',
+    name: 'Maxi Kids Park',
+    price: 399,
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/maxi-kids-park-ljpUXbA42akT4DdmnetvmaMssbCsJJ.webp',
+    tag: 'Dès 399 €',
+    description: 'Le Maxi Kids Park est parfait pour les fêtes plus grandes, avec un environnement ludique adapté aux anniversaires et aux animations de jardin.',
+    ageRange: '4 à 10 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'jardin d’enfants', 'fête familiale', 'animation extérieure'],
+  },
+  {
+    id: 'royal',
+    name: 'Royal Kids Park',
+    price: 449,
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/royal-kids-park-P5QWMDziwoSo3OqvPxxEcCbCPumxdT.webp',
+    tag: 'Dès 449 €',
+    description: 'Le Royal Kids Park est une aire de jeux premium pour des événements qui veulent un cadre grandiose et un accueil festif garanti.',
+    ageRange: '4 à 12 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'mariage', 'fête d’entreprise', 'événement haut de gamme'],
+  },
 ]
 
 const games: Product[] = [
-  { id: 'tetris', name: 'Tetris Tumble', price: 45, image: '/images/tetris-tumble.webp' },
-  { id: 'babyfoot', name: 'Baby-foot', price: 45, image: '/images/baby-foot.webp' },
-  { id: 'pool', name: 'Piscine à balles', price: 55, image: '/images/piscine-balles.webp' },
-  { id: 'cible', name: 'Cible foot géante', price: 45, image: '/images/cible-foot.webp' },
-  { id: 'tir', name: 'Cible de tir', price: 45, image: '/images/cible-tir.webp' },
-  { id: 'bowling', name: 'Bowling arcade', price: 45, image: '/images/bowling.webp' },
-  { id: 'puissance', name: 'Puissance 4 géant', price: 35, image: '/images/puissance-4.webp' },
-  { id: 'haches', name: 'Lancer de haches', price: 45, image: '/images/lancer-haches.webp' },
-  { id: 'basket', name: 'Basket-ball arcade', price: 45, image: '/images/basket.webp' },
+  {
+    id: 'tetris',
+    name: 'Tetris Tumble',
+    price: 45,
+    image: '/images/tetris-tumble.webp',
+    description: 'Le Tetris Tumble est parfait pour des animations de fête, des concours ludiques et des événements familiaux en intérieur comme en extérieur.',
+    ageRange: '3 à 12 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'kermesse', 'fête scolaire', 'animation de jardin'],
+  },
+  {
+    id: 'babyfoot',
+    name: 'Baby-foot',
+    price: 45,
+    image: '/images/baby-foot.webp',
+    description: 'Une animation simple et universelle pour les mariages, fêtes de quartier et soirées conviviales avec petits et grands.',
+    ageRange: 'Tous âges',
+    indoorOutdoor: 'Usage intérieur',
+    eventTypes: ['mariage', 'soirée', 'fête citoyenne', 'événement privé'],
+  },
+  {
+    id: 'pool',
+    name: 'Piscine à balles',
+    price: 55,
+    image: '/images/piscine-balles.webp',
+    description: 'La piscine à balles est une animation très appréciée lors des anniversaires, fêtes de village et événements animés pour enfants.',
+    ageRange: '3 à 10 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'kermesse', 'fête scolaire', 'animation familiale'],
+  },
+  {
+    id: 'cible',
+    name: 'Cible foot géante',
+    price: 45,
+    image: '/images/cible-foot.webp',
+    description: 'Une animation sportive pour les fêtes d’école, anniversaires et événements familiaux qui veulent un moment fun et actif.',
+    ageRange: '5 à 12 ans',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'fête scolaire', 'animation sportive', 'événement extérieur'],
+  },
+  {
+    id: 'tir',
+    name: 'Cible de tir',
+    price: 45,
+    image: '/images/cible-tir.webp',
+    description: 'La cible de tir est idéale pour des animations ludiques et des fêtes de quartier avec un fort potentiel de participation.',
+    ageRange: '6 ans et +',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['fête de quartier', 'animation sportive', 'événement public', 'anniversaire'],
+  },
+  {
+    id: 'bowling',
+    name: 'Bowling arcade',
+    price: 45,
+    image: '/images/bowling.webp',
+    description: 'Le bowling arcade apporte un univers festif pour les anniversaires, soirées privées et animations d’équipe en Île-de-France.',
+    ageRange: '4 ans et +',
+    indoorOutdoor: 'Usage intérieur',
+    eventTypes: ['anniversaire', 'team building', 'soirée', 'fête privée'],
+  },
+  {
+    id: 'puissance',
+    name: 'Puissance 4 géant',
+    price: 35,
+    image: '/images/puissance-4.webp',
+    description: 'Le Puissance 4 géant est parfait pour des soirées conviviales, kermesses et événements familiaux à fort engagement.',
+    ageRange: 'Tous âges',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['kermesse', 'fête familiale', 'soirée', 'événement public'],
+  },
+  {
+    id: 'haches',
+    name: 'Lancer de haches',
+    price: 45,
+    image: '/images/lancer-haches.webp',
+    description: 'Le lancer de haches est une animation dynamique très appréciée pour les fêtes de quartier, soirées et événements extérieurs.',
+    ageRange: '8 ans et +',
+    indoorOutdoor: 'Usage extérieur',
+    eventTypes: ['fête de quartier', 'soiree', 'événement extérieur', 'animation sportive'],
+  },
+  {
+    id: 'basket',
+    name: 'Basket-ball arcade',
+    price: 45,
+    image: '/images/basket.webp',
+    description: 'Le basket-ball arcade est ideal pour les fêtes de quartier, les anniversaires et les animations sportives en plein air.',
+    ageRange: '5 ans et +',
+    indoorOutdoor: 'Usage intérieur et extérieur',
+    eventTypes: ['anniversaire', 'animation sportive', 'fête de quartier', 'événement privé'],
+  },
 ]
 
 export const categoryOrder: CategorySlug[] = ['chateaux', 'aires-de-jeux', 'jeux']
@@ -78,6 +284,48 @@ export const catalogBySlug: Record<CategorySlug, CategoryConfig> = {
     description: 'Des animations ludiques qui complètent une fête, un espace événementiel ou un jardin bien rempli.',
     products: games,
   },
+}
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Jump’In Paris',
+  description: 'Location de château gonflable, aire de jeux et jeux d’anniversaire en Île-de-France.',
+  areaServed: 'Île-de-France',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'Île-de-France',
+    addressCountry: 'FR',
+  },
+  priceRange: '€€',
+  url: 'https://jumpinparis.fr/',
+  telephone: '+33698702341',
+}
+
+function ProductJsonLd({ products }: { products: Product[] }) {
+  const items = products.map((product) => ({
+    '@type': 'Product',
+    name: product.name,
+    image: product.image,
+    description: product.description,
+    category: product.eventTypes.join(', '),
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'EUR',
+      price: product.price,
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+    },
+  }))
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': items }),
+      }}
+    />
+  )
 }
 
 export function HomeCatalogPage() {
@@ -117,7 +365,7 @@ export function HomeCatalogPage() {
       <header className="sticky top-0 z-40 border-b border-border/80 bg-background/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/images/logo.webp" alt="Jump’In Paris" width={64} height={64} className="-my-2 object-contain" />
+            <Image src="/images/logo.webp" alt="Jump’In Paris - location de château gonflable en Île-de-France" width={64} height={64} className="-my-2 object-contain" />
             <span className="hidden font-heading text-lg font-black text-primary sm:block">JUMP’IN PARIS</span>
           </Link>
 
@@ -151,10 +399,10 @@ export function HomeCatalogPage() {
               La fête commence ici
             </p>
             <h1 className="font-heading text-5xl font-black leading-[0.98] tracking-tight text-primary sm:text-7xl">
-              Louez le <span className="text-accent">waouh.</span>
+              Châteaux gonflables, aires de jeux et jeux d’anniversaire en Île-de-France
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
-              Châteaux gonflables, aires de jeux et animations pour des anniversaires qui restent en mémoire.
+              Location de château gonflable, aire de jeux et animations pour anniversaires, fêtes scolaires, kermesses et événements en Île-de-France.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -171,7 +419,7 @@ export function HomeCatalogPage() {
             <div className="absolute inset-8 rounded-[3rem] bg-secondary/25 rotate-3" />
             <Image
               src={parks[2].image!}
-              alt="Royal Kids Park"
+              alt="Aire de jeux Royal Kids Park à louer pour anniversaire en Île-de-France"
               fill
               priority
               className="relative object-contain drop-shadow-2xl"
@@ -230,6 +478,7 @@ export function CategoryPage({ slug }: { slug: CategorySlug }) {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <ProductJsonLd products={category.products} />
       <div className="bg-primary px-5 py-2 text-center text-xs font-black uppercase tracking-[0.2em] text-primary-foreground">
         Livraison, installation et retrait en Île-de-France
       </div>
@@ -265,7 +514,9 @@ export function CategoryPage({ slug }: { slug: CategorySlug }) {
         <p className="text-xs font-black uppercase tracking-[0.2em] text-accent">{category.eyebrow}</p>
         <div className="mt-3 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 className="font-heading text-4xl font-black text-primary sm:text-6xl">{category.title}</h1>
+            <h1 className="font-heading text-4xl font-black text-primary sm:text-6xl">
+              {category.title} à louer en Île-de-France
+            </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">{category.description}</p>
           </div>
           <Link href="/" className="inline-flex items-center gap-2 rounded-full bg-secondary px-5 py-3 text-sm font-black text-secondary-foreground">
@@ -327,7 +578,7 @@ function ProductCard({
       <div className="relative aspect-[1.15] bg-muted/50">
         <Image
           src={product.image!}
-          alt={`${product.name} à louer en Île-de-France`}
+          alt={`${product.name} à louer pour ${product.eventTypes[0]} en Île-de-France`}
           fill
           className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 80vw, 25vw"
@@ -347,6 +598,9 @@ function ProductCard({
           </div>
           <p className="whitespace-nowrap font-heading text-2xl font-black text-primary">{product.price} €</p>
         </div>
+
+        <p className="mt-3 text-sm leading-6 text-muted-foreground">{product.description}</p>
+        <p className="mt-2 text-xs font-medium uppercase tracking-[0.1em] text-primary">{product.ageRange}</p>
 
         <button
           onClick={() => onAdd(product.id)}
@@ -414,7 +668,7 @@ function CartDrawer({
               {items.map((product) => (
                 <div key={product.id} className="flex items-start gap-3 rounded-2xl border border-border bg-muted/30 p-3">
                   <div className="relative size-20 shrink-0 overflow-hidden rounded-xl bg-background">
-                    <Image src={product.image!} alt={product.name} fill className="object-contain" />
+                    <Image src={product.image!} alt={`${product.name} à louer pour événement en Île-de-France`} fill className="object-contain" />
                   </div>
 
                   <div className="min-w-0 flex-1">
