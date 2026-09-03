@@ -383,7 +383,7 @@ function CartDrawer({
     : 'XX/XX/XXXX'
 
   const whatsappHref = selectedDate
-    ? `https://wa.me/33698702341?text=${encodeURIComponent(`Bonjour Jump’In Paris ! Je souhaite réserver :\n${items.map((product) => `• ${product.name} x${cart[product.id]} — ${product.price * (cart[product.id] ?? 0)} €`).join('\n')}\n\nTotal estimatif : ${total} €\nPour le ${displayDate}\nPouvez-vous me confirmer les disponibilités ?`)}`
+    ? `https://wa.me/33698702341?text=${encodeURIComponent(`Bonjour Jump’In Paris ! Je souhaite réserver :\n${items.map((product) => `• ${product.name} — ${product.price} €`).join('\n')}\n\nTotal estimatif : ${total} €\nPour le ${displayDate}\nPouvez-vous me confirmer les disponibilités ?`)} `
     : '#'
 
   return (
