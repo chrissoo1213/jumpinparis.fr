@@ -375,6 +375,7 @@ function CartDrawer({
   onChange: (id: string, amount: number) => void
 }) {
   const [selectedDate, setSelectedDate] = useState('')
+  const [deliveryOption, setDeliveryOption] = useState('')
 
   if (!open) return null
 
@@ -382,8 +383,8 @@ function CartDrawer({
     ? new Date(`${selectedDate}T00:00:00`).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })
     : 'XX/XX/XXXX'
 
-  const whatsappHref = selectedDate
-    ? `https://wa.me/33698702341?text=${encodeURIComponent(`Bonjour Jump’In Paris ! Je souhaite réserver :\n${items.map((product) => `• ${product.name} — ${product.price} €`).join('\n')}\n\nTotal estimatif : ${total} €\nPour le ${displayDate}\nPouvez-vous me confirmer les disponibilités ?`)} `
+  const whatsappHref = selectedDate && deliveryOption
+    ? `https://wa.me/33698702341?text=${encodeURIComponent(`Bonjour Jump’In Paris ! Je souhaite réserver :\n${items.map((product) => `• ${product.name} — ${product.price} €`).join('\n')}\n\nTotal estimatif : ${total} €\nHors frais de livraison + installation\nOption : ${deliveryOption}\nPour le ${displayDate}\nPouvez-vous me confirmer les disponibilités ?`)} `
     : '#'
 
   return (
@@ -436,9 +437,35 @@ function CartDrawer({
 
         {items.length > 0 && (
           <div className="border-t border-border pt-5">
-            <div className="mb-4 flex items-center justify-between font-heading text-xl font-black text-primary">
+            <div className="mb-2 flex items-center justify-between font-heading text-xl font-black text-primary">
               <span>Total estimatif</span>
               <span>{total} €</span>
+            </div>
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
+              Hors frais de livraison + installation
+            </p>
+
+            <div className="mb-4">
+              <p className="mb-2 text-sm font-bold text-primary">Option</p>
+              <div className="space-y-2">
+                {[
+                  'En Option Retrait depuis Carrières-sur-seine(78)',
+                  'Avec Livraison + Installation',
+                  'À discuter selon le prix',
+                ].map((option) => (
+                  <label key={option} className="flex cursor-pointer items-start gap-3 rounded-2xl border border-border bg-muted/30 px-3 py-2 text-sm text-foreground">
+                    <input
+                      type="radio"
+                      name="delivery-option"
+                      value={option}
+                      checked={deliveryOption === option}
+                      onChange={(event) => setDeliveryOption(event.target.value)}
+                      className="mt-0.5 h-4 w-4 accent-primary"
+                    />
+                    <span>{option}</span>
+                  </label>
+                ))}
+              </div>
             </div>
 
             <label className="mb-4 block text-sm font-bold text-primary">
@@ -455,14 +482,14 @@ function CartDrawer({
             <a
               href={whatsappHref}
               onClick={(event) => {
-                if (!selectedDate) {
+                if (!selectedDate || !deliveryOption) {
                   event.preventDefault()
                 }
               }}
-              target={selectedDate ? '_blank' : undefined}
-              rel={selectedDate ? 'noreferrer' : undefined}
-              className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black transition ${selectedDate ? 'bg-primary text-primary-foreground' : 'cursor-not-allowed bg-muted text-muted-foreground'}`}
-              aria-disabled={!selectedDate}
+              target={selectedDate && deliveryOption ? '_blank' : undefined}
+              rel={selectedDate && deliveryOption ? 'noreferrer' : undefined}
+              className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black transition ${selectedDate && deliveryOption ? 'bg-primary text-primary-foreground' : 'cursor-not-allowed bg-muted text-muted-foreground'}`}
+              aria-disabled={!selectedDate || !deliveryOption}
             >
               Réserver par WhatsApp <ArrowRight size={17} />
             </a>
