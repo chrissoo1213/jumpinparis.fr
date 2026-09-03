@@ -93,10 +93,20 @@ export function HomeCatalogPage() {
   )
 
   const add = (id: string) =>
-    setCart((current) => ({ ...current, [id]: (current[id] ?? 0) + 1 }))
+    setCart((current) => ({ ...current, [id]: 1 }))
 
-  const change = (id: string, amount: number) =>
-    setCart((current) => ({ ...current, [id]: Math.max(0, (current[id] ?? 0) + amount) }))
+  const change = (id: string, amount: number) => {
+    if (amount < 0) {
+      setCart((current) => {
+        const next = { ...current }
+        delete next[id]
+        return next
+      })
+      return
+    }
+
+    setCart((current) => ({ ...current, [id]: 1 }))
+  }
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -203,10 +213,20 @@ export function CategoryPage({ slug }: { slug: CategorySlug }) {
   )
 
   const add = (id: string) =>
-    setCart((current) => ({ ...current, [id]: (current[id] ?? 0) + 1 }))
+    setCart((current) => ({ ...current, [id]: 1 }))
 
-  const change = (id: string, amount: number) =>
-    setCart((current) => ({ ...current, [id]: Math.max(0, (current[id] ?? 0) + amount) }))
+  const change = (id: string, amount: number) => {
+    if (amount < 0) {
+      setCart((current) => {
+        const next = { ...current }
+        delete next[id]
+        return next
+      })
+      return
+    }
+
+    setCart((current) => ({ ...current, [id]: 1 }))
+  }
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -391,7 +411,7 @@ function CartDrawer({
           ) : (
             <div className="flex flex-col gap-4">
               {items.map((product) => (
-                <div key={product.id} className="flex gap-3 rounded-2xl border border-border bg-muted/30 p-3">
+                <div key={product.id} className="flex items-start gap-3 rounded-2xl border border-border bg-muted/30 p-3">
                   <div className="relative size-20 shrink-0 overflow-hidden rounded-xl bg-background">
                     <Image src={product.image!} alt={product.name} fill className="object-contain" />
                   </div>
@@ -399,16 +419,15 @@ function CartDrawer({
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-bold text-primary">{product.name}</p>
                     <p className="text-sm text-muted-foreground">{product.price} €</p>
-                    <div className="mt-2 flex items-center gap-2">
-                      <button onClick={() => onChange(product.id, -1)} className="grid size-7 place-items-center rounded-full border border-border">
-                        <Minus size={13} />
-                      </button>
-                      <span className="w-4 text-center text-sm font-bold">{cart[product.id]}</span>
-                      <button onClick={() => onChange(product.id, 1)} className="grid size-7 place-items-center rounded-full border border-border">
-                        <Plus size={13} />
-                      </button>
-                    </div>
                   </div>
+
+                  <button
+                    aria-label={`Retirer ${product.name}`}
+                    onClick={() => onChange(product.id, -1)}
+                    className="ml-auto grid size-8 shrink-0 place-items-center rounded-full border border-border bg-background"
+                  >
+                    <X size={14} />
+                  </button>
                 </div>
               ))}
             </div>
