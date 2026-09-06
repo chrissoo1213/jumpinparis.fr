@@ -441,6 +441,21 @@ export function HomeCatalogPage() {
             onViewMore={`/${slug}`}
           />
         ))}
+
+        <div className="rounded-[2rem] border border-border bg-card p-5 shadow-sm lg:p-6">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-accent">Créer votre espace</p>
+              <h3 className="mt-2 font-heading text-3xl font-black text-primary">Designer votre aire de jeux</h3>
+            </div>
+            <Link
+              href="/aire-de-jeux-builder"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-5 py-3 text-sm font-black text-secondary-foreground shadow-sm"
+            >
+              Ouvrir l’outil <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
       </div>
 
       <CartDrawer open={openCart} onClose={() => setOpenCart(false)} items={items} cart={cart} total={total} onChange={change} />

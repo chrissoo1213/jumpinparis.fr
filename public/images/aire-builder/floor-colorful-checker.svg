@@ -1,0 +1,52 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#FFF5EE"/>
+  <g opacity="0.96">
+    <rect width="1200" height="900" fill="url(#paint0_linear)"/>
+    <g fill="#F9C74F">
+      <rect x="0" y="0" width="150" height="150"/>
+      <rect x="300" y="0" width="150" height="150"/>
+      <rect x="600" y="0" width="150" height="150"/>
+      <rect x="900" y="0" width="150" height="150"/>
+      <rect x="150" y="150" width="150" height="150"/>
+      <rect x="450" y="150" width="150" height="150"/>
+      <rect x="750" y="150" width="150" height="150"/>
+      <rect x="1050" y="150" width="150" height="150"/>
+    </g>
+    <g fill="#90BE6D">
+      <rect x="150" y="0" width="150" height="150"/>
+      <rect x="450" y="0" width="150" height="150"/>
+      <rect x="750" y="0" width="150" height="150"/>
+      <rect x="1050" y="0" width="150" height="150"/>
+      <rect x="0" y="150" width="150" height="150"/>
+      <rect x="300" y="150" width="150" height="150"/>
+      <rect x="600" y="150" width="150" height="150"/>
+      <rect x="900" y="150" width="150" height="150"/>
+    </g>
+    <g fill="#8ECAE6">
+      <rect x="0" y="300" width="150" height="150"/>
+      <rect x="300" y="300" width="150" height="150"/>
+      <rect x="600" y="300" width="150" height="150"/>
+      <rect x="900" y="300" width="150" height="150"/>
+      <rect x="150" y="450" width="150" height="150"/>
+      <rect x="450" y="450" width="150" height="150"/>
+      <rect x="750" y="450" width="150" height="150"/>
+      <rect x="1050" y="450" width="150" height="150"/>
+    </g>
+    <g fill="#FFB3C7">
+      <rect x="150" y="300" width="150" height="150"/>
+      <rect x="450" y="300" width="150" height="150"/>
+      <rect x="750" y="300" width="150" height="150"/>
+      <rect x="1050" y="300" width="150" height="150"/>
+      <rect x="0" y="450" width="150" height="150"/>
+      <rect x="300" y="450" width="150" height="150"/>
+      <rect x="600" y="450" width="150" height="150"/>
+      <rect x="900" y="450" width="150" height="150"/>
+    </g>
+  </g>
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2CC"/>
+      <stop offset="1" stop-color="#F3EAD7"/>
+    </linearGradient>
+  </defs>
+</svg>
